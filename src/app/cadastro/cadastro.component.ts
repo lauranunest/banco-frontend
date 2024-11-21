@@ -28,9 +28,11 @@ export class CadastroComponent implements OnInit {
       localStorage.setItem("user", JSON.stringify(this.cadastroForm.value));
       this.mostrarErro = false;
       this.mostrarSucesso = true;
+      this.fecharMensagens();
     } else {
       this.mostrarErro = true;
       this.mostrarSucesso = false;
+      this.fecharMensagens();
     }
   }
 
@@ -43,5 +45,12 @@ export class CadastroComponent implements OnInit {
       /[^a-zA-ZáÁéÉíÍóÓúÚãÃçÇâÂêÊîÎôÔûÛàÀ]/g,
       ""
     );
+  }
+
+  fecharMensagens() {
+    setTimeout(() => {
+      this.mostrarErro = false;
+      this.mostrarSucesso = false;
+    }, 2000);
   }
 }
