@@ -1,0 +1,56 @@
+<form [formGroup]="cadastroForm" (ngSubmit)="submeter()">
+  <h1 class="tituloCadastro">Cadastrar</h1>
+
+  <label for="numeroConta">Nº da conta</label>
+  <input
+    id="numeroConta"
+    formControlName="numeroConta"
+    type="text"
+    required
+    (input)="somenteNumeros($event)"
+  />
+
+  <label for="numeroAgencia">Nº da agência</label>
+  <input
+    id="numeroAgencia"
+    formControlName="numeroAgencia"
+    type="text"
+    required
+    (input)="somenteNumeros($event)"
+  />
+
+  <label for="nome">Nome</label>
+  <input
+    id="nome"
+    formControlName="nome"
+    type="text"
+    required
+    (input)="somenteLetras($event)"
+  />
+
+  <label for="rg">RG</label>
+  <input
+    id="rg"
+    formControlName="rg"
+    type="text"
+    maxlength="12"
+    placeholder="Ex: 12.345.678-9"
+    required
+  />
+
+  <label for="endereco">Endereço</label>
+  <input id="endereco" formControlName="endereco" type="text" required />
+
+  <label for="email">Email</label>
+  <input id="email" formControlName="email" type="email" required />
+
+  <button type="submit">Cadastrar</button>
+</form>
+
+<div *ngIf="mostrarErro" class="erroMensagem">
+  Por favor, preencha todos campos!
+</div>
+
+<div *ngIf="mostrarSucesso" class="sucessoMensagem">
+  Perfil cadastrado com sucesso!
+</div>
