@@ -1,0 +1,33 @@
+<form [formGroup]="depositoForm" (ngSubmit)="submeterDeposito()">
+  <h1 class="tituloDeposito">Depositar</h1>
+
+  <label for="numeroConta">Nº da conta</label>
+  <input
+    id="numeroConta"
+    formControlName="numeroConta"
+    type="text"
+    required
+    (input)="somenteNumeros($event)"
+  />
+
+  <label for="valorDeposito">Valor a ser depositado</label>
+  <input
+    id="valorDeposito"
+    formControlName="valorDeposito"
+    type="number"
+    min="0.01"
+    step="0.01"
+  />
+
+  <button type="submit">Depositar</button>
+</form>
+
+<div *ngIf="mostrarErro" class="erroMensagem">
+  Por favor, preencha todos campos!
+</div>
+
+<div *ngIf="mostrarErroConta" class="erroMensagem">Conta inválida!</div>
+
+<div *ngIf="mostrarSucesso" class="sucessoMensagem">
+  Depósito realizado com sucesso!
+</div>
