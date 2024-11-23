@@ -1,5 +1,5 @@
 <form [formGroup]="cadastroForm" (ngSubmit)="submeter()">
-  <h1 class="tituloCadastro">Cadastrar</h1>
+  <h1 class="tituloCadastro">Cadastro</h1>
 
   <label for="numeroConta">Nº da conta</label>
   <input
@@ -39,7 +39,7 @@
 </form>
 
 <div *ngIf="mostrarErro" class="erroMensagem">
-  Por favor, preencha todos campos!
+  {{ mensagemErro }}
 </div>
 
 <div *ngIf="mostrarSucesso" class="sucessoMensagem">

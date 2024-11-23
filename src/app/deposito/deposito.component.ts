@@ -10,8 +10,7 @@ export class DepositoComponent implements OnInit {
   depositoForm: FormGroup;
   mostrarErro: boolean = false;
   mostrarSucesso: boolean = false;
-  mostrarErroConta: boolean = false;
-  mostrarErroDeposito: boolean = false;
+  mensagemErro: string = "";
 
   constructor(private fb: FormBuilder) {}
 
@@ -25,7 +24,8 @@ export class DepositoComponent implements OnInit {
   submeterDeposito() {
     if (this.depositoForm.valid) {
       if (this.depositoForm.value.valorDeposito <= 0) {
-        this.mostrarErroDeposito = true;
+        this.mensagemErro = "Valor de depósito deve ser maior do que R$0!";
+        this.mostrarErro = true;
         this.fecharMensagens();
         return null;
       }
@@ -46,10 +46,12 @@ export class DepositoComponent implements OnInit {
         this.mostrarSucesso = true;
         this.fecharMensagens();
       } else {
-        this.mostrarErroConta = true;
+        this.mensagemErro = "Conta inválida!";
+        this.mostrarErro = true;
         this.fecharMensagens();
       }
     } else {
+      this.mensagemErro = "Por favor, preencha todos campos!";
       this.mostrarErro = true;
       this.fecharMensagens();
     }
@@ -63,8 +65,6 @@ export class DepositoComponent implements OnInit {
     setTimeout(() => {
       this.mostrarErro = false;
       this.mostrarSucesso = false;
-      this.mostrarErroConta = false;
-      this.mostrarErroDeposito = false;
     }, 2000);
   }
 }

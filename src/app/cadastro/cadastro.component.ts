@@ -10,6 +10,7 @@ export class CadastroComponent implements OnInit {
   cadastroForm: FormGroup;
   mostrarErro: boolean = false;
   mostrarSucesso: boolean = false;
+  mensagemErro: string = "";
 
   constructor(private fb: FormBuilder) {}
 
@@ -25,16 +26,27 @@ export class CadastroComponent implements OnInit {
 
   submeter() {
     if (this.cadastroForm.valid) {
+      const contaCadastrada = JSON.parse(
+        localStorage.getItem(
+          JSON.stringify(this.cadastroForm.value.numeroConta)
+        ) || "{}"
+      );
+
+      if (contaCadastrada.numeroConta) {
+        this.mensagemErro = "Conta existente!";
+        this.mostrarErro = true;
+        return null;
+      }
+
       localStorage.setItem(
         JSON.stringify(this.cadastroForm.value.numeroConta),
         JSON.stringify(this.cadastroForm.value)
       );
-      this.mostrarErro = false;
       this.mostrarSucesso = true;
       this.fecharMensagens();
     } else {
+      this.mensagemErro = "Por favor, preencha todos campos!";
       this.mostrarErro = true;
-      this.mostrarSucesso = false;
       this.fecharMensagens();
     }
   }

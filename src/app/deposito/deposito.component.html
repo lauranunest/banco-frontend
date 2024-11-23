@@ -1,5 +1,5 @@
 <form [formGroup]="depositoForm" (ngSubmit)="submeterDeposito()">
-  <h1 class="tituloDeposito">Depositar</h1>
+  <h1 class="tituloDeposito">Depósito</h1>
 
   <label for="numeroConta">Nº da conta</label>
   <input
@@ -24,14 +24,8 @@
 </form>
 
 <div *ngIf="mostrarErro" class="erroMensagem">
-  Por favor, preencha todos campos!
+  {{ mensagemErro }}
 </div>
-
-<div *ngIf="mostrarErroDeposito" class="erroMensagem">
-  Valor de depósito deve ser maior do que R$0!
-</div>
-
-<div *ngIf="mostrarErroConta" class="erroMensagem">Conta inválida!</div>
 
 <div *ngIf="mostrarSucesso" class="sucessoMensagem">
   Depósito realizado com sucesso!
