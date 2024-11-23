@@ -1,7 +1,10 @@
 <nav>
   <ul>
     <li *ngIf="mostrarCadastro"><a routerLink="/cadastro">Cadastro</a></li>
-    <li *ngIf="mostrarDeposito"><a routerLink="/deposito">Deposito</a></li>
+    <li *ngIf="mostrarDeposito"><a routerLink="/deposito">Depósito</a></li>
+    <li *ngIf="mostrarTransferencia">
+      <a routerLink="/transferencia">Transferência</a>
+    </li>
   </ul>
 </nav>
 

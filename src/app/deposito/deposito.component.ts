@@ -12,6 +12,7 @@ export class DepositoComponent implements OnInit {
   mostrarSucesso: boolean = false;
   mostrarErroConta: boolean = false;
   mostrarErroDeposito: boolean = false;
+
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {

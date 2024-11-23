@@ -1,0 +1,43 @@
+<form [formGroup]="transferenciaForm" (ngSubmit)="submeterTransferencia()">
+  <h1 class="tituloTransferencia">Transferir</h1>
+
+  <label for="numeroContaOrigem">Nº da conta de origem</label>
+  <input
+    id="numeroContaOrigem"
+    formControlName="numeroContaOrigem"
+    type="text"
+    required
+    (input)="somenteNumeros($event)"
+    required
+  />
+
+  <label for="numeroContaDestino">Nº da conta de destino</label>
+  <input
+    id="numeroContaDestino"
+    formControlName="numeroContaDestino"
+    type="text"
+    required
+    (input)="somenteNumeros($event)"
+    required
+  />
+
+  <label for="valorTransferencia">Valor a ser transferido</label>
+  <input
+    id="valorTransferencia"
+    formControlName="valorTransferencia"
+    type="number"
+    min="0.01"
+    step="0.01"
+    required
+  />
+
+  <button type="submit">Transferir</button>
+</form>
+
+<div *ngIf="mostrarErro" class="erroMensagem">
+  {{ mensagemErro }}
+</div>
+
+<div *ngIf="mostrarSucesso" class="sucessoMensagem">
+  Transferência realizada com sucesso!
+</div>
