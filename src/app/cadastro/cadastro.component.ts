@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-cadastro",
@@ -12,9 +13,10 @@ export class CadastroComponent implements OnInit {
   mostrarSucesso: boolean = false;
   mensagemErro: string = "";
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private title: Title, private fb: FormBuilder) {}
 
   ngOnInit() {
+    this.title.setTitle("Banco | Cadastro");
     this.cadastroForm = this.fb.group({
       numeroConta: "",
       nome: "",

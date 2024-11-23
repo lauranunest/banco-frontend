@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-extrato",
@@ -14,9 +15,10 @@ export class ExtratoComponent implements OnInit {
   mostrarExtrato: boolean = false;
   numeroConta: string = "";
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private title: Title, private fb: FormBuilder) {}
 
   ngOnInit(): void {
+    this.title.setTitle("Banco | Consulta de extrato");
     this.extratoForm = this.fb.group({
       numeroConta: "",
     });

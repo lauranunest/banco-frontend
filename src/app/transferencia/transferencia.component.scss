@@ -81,35 +81,3 @@ button {
   z-index: 1000;
   font-size: 14px;
 }
-
-.erroMensagem {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  background-color: #ffffff;
-  color: #3c3c3c;
-  border: 1px solid #ff0019;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  padding: 10px;
-  border-radius: 5px;
-  z-index: 1000;
-  font-size: 14px;
-}
-
-.sucessoMensagem {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  background-color: #cbffc4;
-  color: #3c3c3c;
-  border: 1px solid #5d9e55;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  padding: 10px;
-  border-radius: 5px;
-  z-index: 1000;
-  font-size: 14px;
-}

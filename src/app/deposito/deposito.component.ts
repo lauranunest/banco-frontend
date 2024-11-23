@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-deposito",
@@ -12,9 +13,10 @@ export class DepositoComponent implements OnInit {
   mostrarSucesso: boolean = false;
   mensagemErro: string = "";
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private title: Title, private fb: FormBuilder) {}
 
   ngOnInit() {
+    this.title.setTitle("Banco | Depósito");
     this.depositoForm = this.fb.group({
       numeroConta: "",
       valorDeposito: "",

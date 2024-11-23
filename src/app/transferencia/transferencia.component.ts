@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-transferencia",
@@ -10,10 +11,12 @@ export class TransferenciaComponent implements OnInit {
   transferenciaForm: FormGroup;
   mensagemErro: string = "";
   mostrarErro: boolean = false;
+  mostrarSucesso: boolean = false;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private title: Title, private fb: FormBuilder) {}
 
   ngOnInit() {
+    this.title.setTitle("Banco | Transferência");
     this.transferenciaForm = this.fb.group({
       numeroContaOrigem: "",
       numeroContaDestino: "",
@@ -113,6 +116,8 @@ export class TransferenciaComponent implements OnInit {
           JSON.stringify(contaCadastradaDestino.numeroConta),
           JSON.stringify(contaCadastradaDestino)
         );
+        this.mostrarSucesso = true;
+        this.fecharMensagens();
       }
     } else {
       this.mensagemErro = "Por favor, preencha todos campos!";
@@ -128,6 +133,7 @@ export class TransferenciaComponent implements OnInit {
   fecharMensagens() {
     setTimeout(() => {
       this.mostrarErro = false;
+      this.mostrarSucesso = false;
     }, 2000);
   }
 }
