@@ -25,7 +25,10 @@ export class CadastroComponent implements OnInit {
 
   submeter() {
     if (this.cadastroForm.valid) {
-      localStorage.setItem("user", JSON.stringify(this.cadastroForm.value));
+      localStorage.setItem(
+        JSON.stringify(this.cadastroForm.value.numeroConta),
+        JSON.stringify(this.cadastroForm.value)
+      );
       this.mostrarErro = false;
       this.mostrarSucesso = true;
       this.fecharMensagens();

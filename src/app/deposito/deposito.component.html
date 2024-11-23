@@ -26,6 +26,10 @@
   Por favor, preencha todos campos!
 </div>
 
+<div *ngIf="mostrarErroDeposito" class="erroMensagem">
+  Valor de depósito deve ser maior do que R$0!
+</div>
+
 <div *ngIf="mostrarErroConta" class="erroMensagem">Conta inválida!</div>
 
 <div *ngIf="mostrarSucesso" class="sucessoMensagem">

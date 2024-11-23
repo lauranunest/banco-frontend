@@ -11,6 +11,7 @@ export class DepositoComponent implements OnInit {
   mostrarErro: boolean = false;
   mostrarSucesso: boolean = false;
   mostrarErroConta: boolean = false;
+  mostrarErroDeposito: boolean = false;
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
@@ -22,26 +23,33 @@ export class DepositoComponent implements OnInit {
 
   submeterDeposito() {
     if (this.depositoForm.valid) {
+      if (this.depositoForm.value.valorDeposito <= 0) {
+        this.mostrarErroDeposito = true;
+        this.fecharMensagens();
+        return null;
+      }
       const deposito = this.depositoForm.value;
-      const contaCadastrada = JSON.parse(localStorage.getItem("user") || "{}");
+      const contaCadastrada = JSON.parse(
+        localStorage.getItem(
+          JSON.stringify(this.depositoForm.value.numeroConta)
+        ) || "{}"
+      );
 
       if (contaCadastrada.numeroConta === deposito.numeroConta) {
         contaCadastrada.saldo =
           (contaCadastrada.saldo || 0) + parseFloat(deposito.valorDeposito);
-        localStorage.setItem("user", JSON.stringify(contaCadastrada));
-
-        this.mostrarErro = false;
+        localStorage.setItem(
+          JSON.stringify(this.depositoForm.value.numeroConta),
+          JSON.stringify(contaCadastrada)
+        );
         this.mostrarSucesso = true;
         this.fecharMensagens();
       } else {
         this.mostrarErroConta = true;
-        this.mostrarErro = false;
-        this.mostrarSucesso = false;
         this.fecharMensagens();
       }
     } else {
       this.mostrarErro = true;
-      this.mostrarSucesso = false;
       this.fecharMensagens();
     }
   }
@@ -55,6 +63,7 @@ export class DepositoComponent implements OnInit {
       this.mostrarErro = false;
       this.mostrarSucesso = false;
       this.mostrarErroConta = false;
+      this.mostrarErroDeposito = false;
     }, 2000);
   }
 }
