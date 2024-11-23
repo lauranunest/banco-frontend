@@ -79,12 +79,32 @@ export class TransferenciaComponent implements OnInit {
         this.mostrarErro = true;
         this.fecharMensagens();
       } else {
+        contaCadastradaOrigem.saldo = contaCadastradaOrigem.saldo || 0;
+        contaCadastradaDestino.saldo = contaCadastradaDestino.saldo || 0;
+
         contaCadastradaOrigem.saldo -= parseFloat(
           this.transferenciaForm.value.valorTransferencia
         );
         contaCadastradaDestino.saldo += parseFloat(
           this.transferenciaForm.value.valorTransferencia
         );
+
+        contaCadastradaOrigem.extrato = contaCadastradaOrigem.extrato || [];
+
+        contaCadastradaOrigem.extrato.push({
+          data: new Date().toLocaleString(),
+          tipo: "Transferência enviada",
+          valor: parseFloat(this.transferenciaForm.value.valorTransferencia),
+        });
+
+        contaCadastradaDestino.extrato = contaCadastradaDestino.extrato || [];
+
+        contaCadastradaDestino.extrato.push({
+          data: new Date().toLocaleString(),
+          tipo: "Transferência recebida",
+          valor: parseFloat(this.transferenciaForm.value.valorTransferencia),
+        });
+
         localStorage.setItem(
           JSON.stringify(contaCadastradaOrigem.numeroConta),
           JSON.stringify(contaCadastradaOrigem)

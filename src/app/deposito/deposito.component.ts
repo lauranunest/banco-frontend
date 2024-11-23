@@ -39,6 +39,15 @@ export class DepositoComponent implements OnInit {
       if (contaCadastrada.numeroConta === deposito.numeroConta) {
         contaCadastrada.saldo =
           (contaCadastrada.saldo || 0) + parseFloat(deposito.valorDeposito);
+
+        contaCadastrada.extrato = contaCadastrada.extrato || [];
+
+        contaCadastrada.extrato.push({
+          data: new Date().toLocaleString(),
+          tipo: "Depósito",
+          valor: parseFloat(deposito.valorDeposito),
+        });
+
         localStorage.setItem(
           JSON.stringify(this.depositoForm.value.numeroConta),
           JSON.stringify(contaCadastrada)
