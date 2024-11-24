@@ -15,6 +15,7 @@
 
 <div *ngIf="mostrarExtrato" class="extratoMensagem">
   <h2>Extrato da Conta {{ numeroConta }}</h2>
+  <p class="saldo"><strong>Saldo:</strong> R$ {{ saldo | number : "1.2-2" }}</p>
   <div *ngFor="let item of extrato">
     <p><strong>Data:</strong> {{ item.data }}</p>
     <p><strong>Tipo:</strong> {{ item.tipo }}</p>

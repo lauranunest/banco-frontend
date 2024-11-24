@@ -73,6 +73,9 @@ export class TransferenciaComponent implements OnInit {
         this.fecharMensagens();
       }
 
+      contaCadastradaOrigem.saldo = contaCadastradaOrigem.saldo || 0;
+      contaCadastradaDestino.saldo = contaCadastradaDestino.saldo || 0;
+
       if (
         contaCadastradaOrigem.saldo <
         this.transferenciaForm.value.valorTransferencia
@@ -82,9 +85,6 @@ export class TransferenciaComponent implements OnInit {
         this.mostrarErro = true;
         this.fecharMensagens();
       } else {
-        contaCadastradaOrigem.saldo = contaCadastradaOrigem.saldo || 0;
-        contaCadastradaDestino.saldo = contaCadastradaDestino.saldo || 0;
-
         contaCadastradaOrigem.saldo -= parseFloat(
           this.transferenciaForm.value.valorTransferencia
         );
