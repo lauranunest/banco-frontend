@@ -1,27 +1,40 @@
 # BancoFrontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.29.
+Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 8.3.29.
 
-## Development server
+## Pré-requisitos
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Certifique-se de ter as seguintes dependências instaladas antes de iniciar o servidor de desenvolvimento:
 
-## Code scaffolding
+1. **Node.js** - Instale a versão 12 do Node.js usando o [nvm](https://github.com/nvm-sh/nvm):
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+    ```bash
+    nvm install 12
+    ```
 
-## Build
+2. **Angular CLI** - Instale a versão global do Angular CLI:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+    ```bash
+    npm install -g @angular/cli
+    ```
 
-## Running unit tests
+## Instalando as dependências do projeto
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Após garantir que as dependências necessárias estão instaladas, siga os passos abaixo para instalar as dependências do projeto:
 
-## Running end-to-end tests
+1. Instale as dependências do projeto:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+    ```bash
+    npm install
+    ```
 
-## Further help
+## Servidor de desenvolvimento
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Execute `npm run start` para iniciar o servidor de desenvolvimento. Navegue até `http://localhost:4200/`. A aplicação será recarregada automaticamente sempre que houver mudanças nos arquivos de código.
+
+## Construção do projeto
+
+Para construir o projeto, execute:
+
+```bash
+ng build
